@@ -38,3 +38,30 @@ int main(int argc, char* argv[])
         printf("Usage: %s n1 n2\n", argv[0]);
         exit(1);
     }
+
+    x = atoi(argv[1]);
+    y = atoi(argv[2]);
+
+    printf("Before: %d %d\n", x, y);
+    swap(&x, &y, sizeof(int));
+    printf("After: %d %d\n", x, y);
+
+    printf(
+        "Before: %s %s, %s %s\n", 
+        first.firstName, 
+        first.lastName,
+        second.firstName,
+        second.lastName
+    );
+    swap(&first, &second, sizeof(Person));
+    printf(
+        "After: %s %s, %s %s\n", 
+        first.firstName, 
+        first.lastName,
+        second.firstName,
+        second.lastName
+    );
+
+
+    exit(0);
+}
