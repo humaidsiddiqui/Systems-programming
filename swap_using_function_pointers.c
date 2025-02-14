@@ -38,3 +38,4 @@ int main(int argc, char* argv[])
         printf("Usage: %s message\n", argv[0]);
         exit(1);
     }
+}
