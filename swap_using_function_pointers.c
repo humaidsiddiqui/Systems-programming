@@ -20,3 +20,9 @@ void modify(char* message, int (*visitor)(int))
         printf("message cannot be null.\n");
         exit(1);
     }
+    for (index = 0; message[index] != '\0'; index++)
+    {
+        message[index] = visitor(message[index]);
+    }
+
+}
