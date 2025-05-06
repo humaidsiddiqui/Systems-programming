@@ -64,4 +64,24 @@ int main(int argc, char* argv[])
         printf("Failed to read source file.\n");
         exit(1);
     }
+     /* Close the source file */
+     status = close(sourceFd);
+     if (status == -1)
+     {
+         printf("Failed to close source file.\n");
+         exit(1);
+     }
+ 
+     /* Close the destination file */
+     status = close(destinationFd);
+     if (status == -1)
+     {
+         printf("Failed to close destination file.\n");
+         exit(1);
+     }
+ 
+ 
+ 
+ 
+ }
     
