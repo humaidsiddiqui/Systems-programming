@@ -30,3 +30,19 @@ int main()
     }
 
     childPid = fork();
+    
+    switch(childPid)
+    {
+        case -1: /* Child creation failed */
+            printf("Failed to create child process.\n");
+            exit(EXIT_FAILURE);
+
+        case 0: /* Child process */
+            printf(
+                "I am the child process with PID %d. My parent PID is %d.\n",
+                getpid(),
+                getppid()
+            );
+
+            sleep(2);
+            _exit(EXIT_SUCCESS);
