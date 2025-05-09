@@ -30,7 +30,7 @@ int main()
     }
 
     childPid = fork();
-    
+
     switch(childPid)
     {
         case -1: /* Child creation failed */
@@ -46,3 +46,27 @@ int main()
 
             sleep(2);
             _exit(EXIT_SUCCESS);
+            default: /* Parent process */
+            printf(
+                "I am the parent process with PID %d. I created a child process with PID %d.\n",
+                getpid(),
+                childPid
+            );
+
+            childPid = wait(&childStatus);
+            if (childPid == -1)
+            {
+                printf("Failed to wait for child process.\n");
+                exit(EXIT_FAILURE);
+            }
+
+            printf(
+                "Child process with PID %d exited with status %d.\n",
+                childPid,
+                childStatus
+            );
+
+            exit(EXIT_SUCCESS);
+    }
+
+}
