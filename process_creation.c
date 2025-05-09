@@ -6,3 +6,13 @@
  * The exit system call is _exit()
  * The library function exit() is for running exit handler (if registered) after which it calls _exit()
 */
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+void printBye()
+{
+    printf("Process %d says Bye!\n", getpid());
+}
