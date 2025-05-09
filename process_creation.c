@@ -16,3 +16,17 @@ void printBye()
 {
     printf("Process %d says Bye!\n", getpid());
 }
+int main()
+{
+    pid_t childPid;
+    int childStatus, status;
+
+    /* Register the exit handler */
+    status = atexit(printBye);
+    if (status != 0)
+    {
+        printf("Failed to register exit handler.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    childPid = fork();
