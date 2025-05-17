@@ -45,3 +45,11 @@ int main()
                     getpid(),
                     getppid()
                 );
+                sleep(delay[index]);
+                _exit(EXIT_SUCCESS);
+
+            default: /* Parent process */
+                break;
+        }
+ 
+    }
