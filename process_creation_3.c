@@ -53,3 +53,21 @@ int main()
         }
  
     }
+     for (index = 0; index < 2; index++)
+    {
+        child = waitpid(childPid[index], &childStatus, 0);
+        if (child == -1)
+        {
+            printf("Failed to wait for child process.\n");
+            exit(EXIT_FAILURE);
+        }
+
+        printf(
+            "Child process with PID %d exited with status %d.\n",
+            child,
+            childStatus
+        );
+    }
+
+    exit(EXIT_SUCCESS);
+}
