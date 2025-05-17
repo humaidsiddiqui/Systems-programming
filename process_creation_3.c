@@ -22,3 +22,10 @@ int main()
     pid_t childPid[2];
     unsigned int delay[2] = {2, 1};
     int childStatus, status, index;
+    /* Register the exit handler */
+    status = atexit(printBye);
+    if (status != 0)
+    {
+        printf("Failed to register exit handler.\n");
+        exit(EXIT_FAILURE);
+    }
