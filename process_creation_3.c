@@ -29,3 +29,19 @@ int main()
         printf("Failed to register exit handler.\n");
         exit(EXIT_FAILURE);
     }
+    for (index = 0; index < 2; index++)
+    {
+        childPid[index] = fork();
+
+        switch(childPid[index])
+        {
+            case -1: /* Child creation failed */
+                printf("Failed to create child process.\n");
+                exit(EXIT_FAILURE);
+
+            case 0: /* Child process */
+                printf(
+                    "I am the child process with PID %d. My parent PID is %d.\n",
+                    getpid(),
+                    getppid()
+                );
