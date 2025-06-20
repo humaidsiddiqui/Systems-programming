@@ -60,3 +60,26 @@ void* decrement(void* arg)
 
     pthread_exit(NULL);
 }
+
+int main(int argc, char* argv[])
+{
+    pthread_t thread1, thread2;
+    int n1, n2;
+    int status;
+
+    if (argc != 3 ||
+        strcmp(argv[1], "-h") == 0 ||
+        strcmp(argv[1], "--help") == 0)
+    {
+        printf("Usage: ./thread n1 n2\n");
+        exit(1);
+    }
+
+    n1 = atoi(argv[1]);
+    n2 = atoi(argv[2]);
+
+    if (n1 <= 0 || n2 <= 0)
+    {
+        printf("Usage: ./thread n1 n2\n");
+        exit(1);
+    }
