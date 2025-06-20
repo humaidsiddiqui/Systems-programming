@@ -83,3 +83,35 @@ int main(int argc, char* argv[])
         printf("Usage: ./thread n1 n2\n");
         exit(1);
     }
+    status = pthread_create(&thread1, NULL, increment, (void*)&n1);
+    if (status != 0)
+    {
+        printf("Failed to create increment thread.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    status = pthread_create(&thread2, NULL, decrement, (void*)&n2);
+    if (status != 0)
+    {
+        printf("Failed to create decrement thread.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    status = pthread_join(thread1, NULL);
+    if (status != 0)
+    {
+        printf("Failed to join increment thread.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    status = pthread_join(thread2, NULL);
+    if (status != 0)
+    {
+        printf("Failed to join decrement thread.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("%d\n", count);
+
+    exit(EXIT_SUCCESS);
+}
