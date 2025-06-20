@@ -34,3 +34,29 @@ void* increment(void* arg)
 
     pthread_exit(NULL);
 }
+void* decrement(void* arg)
+{
+    int n2 = *((int*) arg);
+    int status;
+
+    for (int i = 0; i < n2; i++)
+    {
+        status = pthread_mutex_lock(&mutex);
+        if (status != 0)
+        {
+            printf("Failed to lock mutex.\n");
+            exit(EXIT_FAILURE);
+        }
+
+        count--;
+
+        status = pthread_mutex_unlock(&mutex);
+        if (status != 0)
+        {
+            printf("Failed to unlock mutex.\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    pthread_exit(NULL);
+}
